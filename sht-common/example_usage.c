@@ -28,9 +28,9 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-/* #include <stdio.h> // printf
- * #include <unistd.h> // sleep
- */
+#include <stdio.h> // printf
+#include <unistd.h> // sleep
+
 #include "sht.h"
 
 /**
@@ -44,9 +44,9 @@ int main(void)
      * a sensor.
      */
     while (sht_probe() != STATUS_OK) {
-        /* printf("SHT sensor probing failed\n"); */
+        printf("SHT sensor probing failed\n"); 
     }
-    /* printf("SHT sensor probing successful\n"); */
+    	printf("SHT sensor probing successful\n");
 
     while (1) {
         s32 temperature, humidity;
@@ -55,15 +55,15 @@ int main(void)
          */
         s8 ret = sht_measure_blocking_read(&temperature, &humidity);
         if (ret == STATUS_OK) {
-            /* printf("measured temperature: %0.2f degreeCelsius, "
+             	printf("measured temperature: %0.2f degreeCelsius, "
                       "measured humidity: %0.2f percentRH\n",
                       temperature / 1000.0f,
-                      humidity / 1000.0f); */
+                      humidity / 1000.0f); 
         } else {
-            /* printf("error reading measurement\n"); */
+            	printf("error reading measurement\n");
         }
 
-        /* sleep(1); */
+        	sleep(1);
     }
     return 0;
 }
